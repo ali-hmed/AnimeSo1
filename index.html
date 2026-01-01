@@ -60,13 +60,13 @@
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#" class="nav__link">
-                            <i class='bx bx-book-open'></i>
-                            <span>Anime Name</span>
+                        <a href="popular.html" class="nav__link">
+                            <i class='bx bx-trending-up'></i>
+                            <span>Most Popular</span>
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#" class="nav__link">
+                        <a href="news.html" class="nav__link">
                             <i class='bx bx-news'></i>
                             <span>News</span>
                         </a>
@@ -95,11 +95,32 @@
                     Watch Together</a></li>
             <li class="sidebar-mobile__item"><a href="#" class="sidebar-mobile__link"><i class='bx bx-shuffle'></i>
                     Random</a></li>
-            <li class="sidebar-mobile__item"><a href="#" class="sidebar-mobile__link"><i class='bx bx-book-open'></i>
-                    Anime Name</a></li>
-            <li class="sidebar-mobile__item"><a href="#" class="sidebar-mobile__link"><i class='bx bx-news'></i>
+            <li class="sidebar-mobile__item"><a href="popular.html" class="sidebar-mobile__link"><i
+                        class='bx bx-trending-up'></i>
+                    Most Popular</a></li>
+            <li class="sidebar-mobile__item"><a href="news.html" class="sidebar-mobile__link"><i class='bx bx-news'></i>
                     News</a></li>
         </ul>
+    </div>
+
+    <!-- Mobile Search Overlay -->
+    <div class="mobile-search-overlay" id="mobile-search-overlay">
+        <div class="mobile-search-container">
+            <div class="mobile-search-header">
+                <h3>Search Anime</h3>
+                <div class="mobile-search-close" id="mobile-search-close">
+                    <i class='bx bx-x'></i>
+                </div>
+            </div>
+            <form action="search.html" method="GET" class="mobile-search-form">
+                <div class="mobile-search-input-wrapper">
+                    <i class='bx bx-search'></i>
+                    <input type="text" name="q" placeholder="Search anime..." id="mobile-search-input"
+                        autocomplete="off">
+                </div>
+                <button type="submit" class="button mobile-search-submit">Search</button>
+            </form>
+        </div>
     </div>
 
     <!-- Main Content -->

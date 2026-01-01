@@ -1,0 +1,128 @@
+/* PAGE HEADER STYLES */
+.page-header {
+    padding-top: 100px;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.breadcrumb {
+    font-size: var(--small-font-size);
+    color: var(--text-color-light);
+    margin-bottom: 1rem;
+}
+
+.breadcrumb a {
+    color: var(--first-color);
+    transition: 0.3s;
+}
+
+.breadcrumb a:hover {
+    color: #ff60ad;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    font-size: var(--normal-font-size);
+    color: var(--text-color-light);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* NEWS GRID */
+.news-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.news-item {
+    background: var(--container-color);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    transition: 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.news-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    border-color: var(--first-color);
+}
+
+.news-item__image {
+    width: 200px;
+    min-width: 200px;
+    height: 150px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+}
+
+.news-item__content {
+    flex: 1;
+}
+
+.news-item__category {
+    display: inline-block;
+    background: rgba(255, 96, 173, 0.1);
+    color: #ff60ad;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: var(--smaller-font-size);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.news-item__title {
+    font-size: var(--h3-font-size);
+    color: #fff;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.news-item__excerpt {
+    color: var(--text-color-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.news-item__meta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: var(--smaller-font-size);
+    color: var(--text-color-light);
+}
+
+.news-item__meta i {
+    color: #ff60ad;
+    margin-right: 0.25rem;
+}
+
+@media screen and (max-width: 768px) {
+    .page-title {
+        font-size: 1.8rem;
+    }
+
+    .news-item {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .news-item__image {
+        width: 100%;
+        height: 200px;
+    }
+}

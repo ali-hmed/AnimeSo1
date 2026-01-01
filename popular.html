@@ -4,20 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Results - AnimeSo</title>
-    <meta name="description" content="Search for your favorite anime on AnimeSo.">
+    <title>Most Popular Anime - AnimeSo</title>
+    <meta name="description" content="Discover the most popular anime series and movies on AnimeSo.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages-styles.css">
 </head>
 
 <body>
-
+    <!-- Header -->
     <header class="header" id="header">
         <nav class="nav container">
             <div class="nav__left-group">
@@ -95,7 +96,8 @@
                     Watch Together</a></li>
             <li class="sidebar-mobile__item"><a href="#" class="sidebar-mobile__link"><i class='bx bx-shuffle'></i>
                     Random</a></li>
-            <li class="sidebar-mobile__item"><a href="popular.html" class="sidebar-mobile__link"><i class='bx bx-trending-up'></i>
+            <li class="sidebar-mobile__item"><a href="popular.html" class="sidebar-mobile__link"><i
+                        class='bx bx-trending-up'></i>
                     Most Popular</a></li>
             <li class="sidebar-mobile__item"><a href="news.html" class="sidebar-mobile__link"><i class='bx bx-news'></i>
                     News</a></li>
@@ -124,89 +126,23 @@
 
     <!-- Main Content -->
     <main class="main">
-        <section class="filter section container">
-            <nav class="breadcrumb">
-                <a href="index.html">Home</a> • <span>Filter</span>
-            </nav>
-
-            <div class="filter__box">
-                <div class="filter__options">
-                    <div class="filter__group">
-                        <label>Type</label>
-                        <select>
-                            <option>All</option>
-                            <option>TV</option>
-                            <option>Movie</option>
-                            <option>OVA</option>
-                        </select>
-                    </div>
-                    <div class="filter__group">
-                        <label>Status</label>
-                        <select>
-                            <option>All</option>
-                            <option>Finished</option>
-                            <option>Ongoing</option>
-                        </select>
-                    </div>
-                    <div class="filter__group">
-                        <label>Rated</label>
-                        <select>
-                            <option>All</option>
-                            <option>PG-13</option>
-                            <option>R</option>
-                        </select>
-                    </div>
-                    <div class="filter__group">
-                        <label>Score</label>
-                        <select>
-                            <option>All</option>
-                            <option>Good</option>
-                            <option>Average</option>
-                        </select>
-                    </div>
-                    <div class="filter__group">
-                        <label>Season</label>
-                        <select>
-                            <option>All</option>
-                            <option>Winter</option>
-                            <option>Summer</option>
-                        </select>
-                    </div>
-                    <div class="filter__group">
-                        <label>Language</label>
-                        <select>
-                            <option>All</option>
-                            <option>Sub</option>
-                            <option>Dub</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="filter__genres">
-                    <label>Genre</label>
-                    <div class="genre__tags">
-                        <span>Action</span><span>Adventure</span><span>Cars</span><span>Comedy</span><span>Dementia</span><span>Demons</span>
-                        <span>Drama</span><span>Ecchi</span><span>Fantasy</span><span>Game</span><span>Harem</span><span>Historical</span>
-                        <span>Horror</span><span>Isekai</span><span>Josei</span><span>Kids</span><span>Magic</span><span>Martial
-                            Arts</span>
-                        <span>Mecha</span><span>Military</span><span>Music</span><span>Mystery</span><span>Parody</span><span>Police</span>
-                    </div>
-                </div>
-
-                <button class="button filter__btn">Filter</button>
+        <!-- Page Header -->
+        <section class="page-header section container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> • <span>Most Popular</span>
             </div>
+            <h1 class="page-title">Most Popular Anime</h1>
+            <p class="page-subtitle">Explore the most popular anime series and movies right now</p>
+        </section>
 
-            <div class="results__header">
-                <h2 class="results__title" id="search-title">Filter Results</h2>
-                <span class="results__count" id="results-count">--- results</span>
-            </div>
-
-            <!-- Search Results Grid -->
-            <div class="search__grid" id="search-results-container">
+        <!-- Popular Anime Grid -->
+        <section class="popular-section section container">
+            <div class="movies__container" id="popular-container">
+                <!-- Popular anime will be loaded here -->
                 <div class="loading-spinner"></div>
             </div>
 
-            <!-- Pagination Mockup -->
+            <!-- Pagination -->
             <div class="pagination">
                 <span class="active">1</span>
                 <span>2</span>
