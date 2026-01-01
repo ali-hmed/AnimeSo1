@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnimeSo - Premium Anime VOD</title>
+    <meta name="description" content="Discover the best anime movies in a stunning visual experience.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header" id="header">
+        <nav class="nav container">
+            <div class="nav__left-group">
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+                <a href="index.html" class="nav__logo">
+                    <img src="https://hianime.to/images/logo.png" alt="AnimeSo" style="height: 30px;"
+                        onerror="this.src=''; this.alt='AnimeSo';">
+                </a>
+            </div>
+
+            <div class="nav__search-group">
+                <form action="search.html" method="GET" class="nav__search-form">
+                    <input type="text" name="q" placeholder="Search anime..." id="search-input" autocomplete="off">
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                    <button type="button" class="filter-btn-header">Filter</button>
+                </form>
+            </div>
+
+            <div class="nav__socials desktop-only">
+                <a href="#"><i class='bx bxl-discord-alt'></i></a>
+                <a href="#"><i class='bx bxl-telegram'></i></a>
+                <a href="#"><i class='bx bxl-reddit'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            <i class='bx bx-broadcast'></i>
+                            <span>Watch together</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            <i class='bx bx-shuffle'></i>
+                            <span>Random</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            <i class='bx bx-book-open'></i>
+                            <span>Anime Name</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">
+                            <i class='bx bx-news'></i>
+                            <span>News</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav__right-group">
+                <div class="nav__search-mobile" id="mobile-search-btn">
+                    <i class='bx bx-search'></i>
+                </div>
+                <a href="#" class="login-btn">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Sidebar -->
+    <div class="sidebar-mobile" id="sidebar-mobile">
+        <div class="sidebar-mobile__close" id="sidebar-close">
+            <i class='bx bx-x'></i>
+        </div>
+        <ul class="sidebar-mobile__list">
+            <li class="sidebar-mobile__item"><a href="index.html" class="sidebar-mobile__link"><i
+                        class='bx bx-home'></i> Home</a></li>
+            <li class="sidebar-mobile__item"><a href="#" class="sidebar-mobile__link"><i class='bx bx-broadcast'></i>
+                    Watch Together</a></li>
+            <li class="sidebar-mobile__item"><a href="#" class="sidebar-mobile__link"><i class='bx bx-shuffle'></i>
+                    Random</a></li>
+            <li class="sidebar-mobile__item"><a href="#" class="sidebar-mobile__link"><i class='bx bx-book-open'></i>
+                    Anime Name</a></li>
+            <li class="sidebar-mobile__item"><a href="#" class="sidebar-mobile__link"><i class='bx bx-news'></i>
+                    News</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="home" id="home">
+            <div id="hero-content">
+                <!-- Hero content injected via JS -->
+            </div>
+
+            <div class="hero__controls container">
+                <div class="hero__pagination" id="hero-pagination"></div>
+                <div class="hero__arrows">
+                    <button class="hero__arrow" id="hero-prev"><i class='bx bx-chevron-left'></i></button>
+                    <button class="hero__arrow" id="hero-next"><i class='bx bx-chevron-right'></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trending Section (with numbers) -->
+        <section class="trending section container">
+            <h2 class="section__title-small">Trending</h2>
+            <div class="trending__container" id="trending-container">
+                <!-- Trending item injected via JS -->
+            </div>
+        </section>
+
+        <!-- Main Content Area (Two Columns) -->
+        <div class="layout__grid container">
+            <!-- Left Column -->
+            <div class="layout__left">
+
+                <!-- Top Lists Section (4 Grids) -->
+                <section class="top-lists grid-4">
+                    <div class="list__group">
+                        <h3 class="list__title">Top Anime</h3>
+                        <div class="list__items" id="top-anime-list"></div>
+                        <a href="#" class="view-more">View More <i class='bx bx-chevron-right'></i></a>
+                    </div>
+                    <div class="list__group">
+                        <h3 class="list__title">Most Popular</h3>
+                        <div class="list__items" id="most-popular-list"></div>
+                        <a href="#" class="view-more">View More <i class='bx bx-chevron-right'></i></a>
+                    </div>
+                    <div class="list__group">
+                        <h3 class="list__title">Most Favorite</h3>
+                        <div class="list__items" id="most-favorite-list"></div>
+                        <a href="#" class="view-more">View More <i class='bx bx-chevron-right'></i></a>
+                    </div>
+                    <div class="list__group">
+                        <h3 class="list__title">Latest Completed</h3>
+                        <div class="list__items" id="latest-completed-list"></div>
+                        <a href="#" class="view-more">View More <i class='bx bx-chevron-right'></i></a>
+                    </div>
+                </section>
+
+                <!-- Latest Episodes Section -->
+                <section class="movies section">
+                    <div class="section__header">
+                        <h2 class="section__title">Latest Episodes</h2>
+                        <a href="#" class="view-more">View More</a>
+                    </div>
+                    <div class="movies__container" id="latest-episodes-container">
+                        <!-- Cards injected via JS -->
+                    </div>
+                </section>
+
+                <!-- New On HiAnime -->
+                <section class="movies section">
+                    <div class="section__header">
+                        <h2 class="section__title">New On AnimeSo</h2>
+                        <a href="#" class="view-more">View More</a>
+                    </div>
+                    <div class="movies__container" id="new-on-hianime-container">
+                        <!-- Cards injected via JS -->
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column (Sidebar) -->
+            <aside class="layout__right">
+                <div class="sidebar__group">
+                    <div class="sidebar__header">
+                        <h3 class="sidebar__title">Top 10</h3>
+                        <div class="sidebar__tabs">
+                            <span class="active">Today</span>
+                            <span>Week</span>
+                            <span>Month</span>
+                        </div>
+                    </div>
+                    <div class="sidebar__list" id="top-10-list"></div>
+                </div>
+
+                <div class="sidebar__group">
+                    <h3 class="sidebar__title">Trending Posts</h3>
+                    <div class="sidebar__posts">
+                        <div class="post__item">
+                            <p class="post__text">Happy New Year to all my fellow HiAnime users!</p>
+                            <span class="post__meta">#General • 2 hours ago</span>
+                        </div>
+                        <div class="post__item">
+                            <p class="post__text">What's the best anime of 2025 so far?</p>
+                            <span class="post__meta">#Anime • 5 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- A-Z List Footer -->
+        <section class="az-list container">
+            <h3 class="az-list__title">A-Z LIST</h3>
+            <div class="az__wrapper">
+                <span>All</span><span>#</span><span>0-9</span>
+                <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span><span>I</span><span>J</span><span>K</span><span>L</span><span>M</span><span>N</span><span>O</span><span>P</span><span>Q</span><span>R</span><span>S</span><span>T</span><span>U</span><span>V</span><span>W</span><span>X</span><span>Y</span><span>Z</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer section">
+        <div class="footer__container container">
+            <h3 class="footer__title">AnimeSo</h3>
+            <p class="footer__subtitle">Your purely visual guide to Anime.</p>
+            <span class="footer__copy">&#169; AnimeSo. All rights reserved. Data provided by Jikan API.</span>
+        </div>
+    </footer>
+
+    <!-- Movie Details Modal -->
+    <div class="modal" id="movie-modal">
+        <div class="modal__content">
+            <i class='bx bx-x modal__close' id="modal-close"></i>
+            <div class="modal__body" id="modal-body">
+                <!-- Details injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
