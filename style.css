@@ -330,9 +330,9 @@ img {
     .home__data {
         padding: 1rem;
         /* Reduced horizontal padding */
-        width: 100%;
+        width: 80%;
         /* margin-left: 100px; */
-        margin-right: 170px;
+        margin-right: 180px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
