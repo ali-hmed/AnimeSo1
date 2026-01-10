@@ -112,14 +112,41 @@ function setupEventListeners() {
         });
     }
 
-    // Close overlay on outside click
-    if (mobileSearchOverlay) {
-        mobileSearchOverlay.addEventListener('click', (e) => {
-            if (e.target === mobileSearchOverlay) {
-                mobileSearchOverlay.classList.remove('active');
+    // Sidebar Tabs
+    setupSidebarTabs();
+}
+
+function setupSidebarTabs() {
+    const tabs = document.querySelectorAll('.sidebar__tabs span');
+    const sidebarList = document.getElementById('top-10-list');
+
+    if (!sidebarList) return;
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Update Active State
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // Determine Endpoint
+            const type = tab.textContent.trim().toLowerCase();
+            let url = '';
+
+            if (type === 'today') {
+                url = `${API_URL}/top/anime?filter=airing&limit=10`;
+            } else if (type === 'week') {
+                url = `${API_URL}/top/anime?filter=bypopularity&limit=10`;
+            } else if (type === 'month') {
+                url = `${API_URL}/top/anime?filter=favorite&limit=10`;
+            }
+
+            // Fetch
+            if (url) {
+                sidebarList.innerHTML = '<div class="loading-spinner" style="width:20px;height:20px;border-width:2px;"></div>';
+                fetchSidebarList(url, sidebarList);
             }
         });
-    }
+    });
 }
 
 async function loadHomePage() {
@@ -137,43 +164,45 @@ async function loadHomePage() {
         }
         renderTrending(topData.data, trendingContainer);
 
-        // SEQUENTIAL LOADING with small delays to avoid 429 Rate Limit (Jikan limit: 3/sec)
+        // SEQUENTIAL LOADING with larger delays to avoid 429 Rate Limit (Jikan limit: 3/sec)
         // 2. Main content sections
         const latestContainer = document.getElementById('latest-episodes-container');
         if (latestContainer) {
-            setTimeout(() => fetchCategory(`${API_URL}/seasons/now?limit=12`, latestContainer), 500);
+            setTimeout(() => fetchCategory(`${API_URL}/seasons/now?limit=12`, latestContainer), 800);
         }
 
         const newContainer = document.getElementById('new-on-hianime-container');
         if (newContainer) {
-            setTimeout(() => fetchCategory(`${API_URL}/top/anime?filter=upcoming&limit=12`, newContainer), 1000);
+            setTimeout(() => fetchCategory(`${API_URL}/top/anime?filter=upcoming&limit=12`, newContainer), 1600);
         }
 
         // 3. Top Lists (Left Column)
         const topAnimeList = document.getElementById('top-anime-list');
         if (topAnimeList) {
-            setTimeout(() => fetchListGroup(`${API_URL}/top/anime?type=tv&limit=5`, topAnimeList), 1500);
+            setTimeout(() => fetchListGroup(`${API_URL}/top/anime?type=tv&limit=5`, topAnimeList), 2400);
         }
 
         const mostPopularList = document.getElementById('most-popular-list');
         if (mostPopularList) {
-            setTimeout(() => fetchListGroup(`${API_URL}/top/anime?filter=bypopularity&limit=5`, mostPopularList), 2000);
+            // Use search endpoint for consistency
+            setTimeout(() => fetchListGroup(`${API_URL}/anime?order_by=popularity&sort=asc&limit=5`, mostPopularList), 3200);
         }
 
         const mostFavoriteList = document.getElementById('most-favorite-list');
         if (mostFavoriteList) {
-            setTimeout(() => fetchListGroup(`${API_URL}/top/anime?filter=favorite&limit=5`, mostFavoriteList), 2500);
+            setTimeout(() => fetchListGroup(`${API_URL}/anime?order_by=favorites&sort=desc&limit=5`, mostFavoriteList), 4000);
         }
 
         const completedList = document.getElementById('latest-completed-list');
         if (completedList) {
-            setTimeout(() => fetchListGroup(`${API_URL}/top/anime?status=complete&limit=5`, completedList), 3000);
+            setTimeout(() => fetchListGroup(`${API_URL}/anime?status=complete&order_by=end_date&sort=desc&limit=5`, completedList), 4800);
         }
 
         // 4. Sidebar (Top 10)
         const sidebarList = document.getElementById('top-10-list');
         if (sidebarList) {
-            setTimeout(() => fetchSidebarList(`${API_URL}/top/anime?limit=10`, sidebarList), 3500);
+            // Default to 'Today' (Top Airing)
+            setTimeout(() => fetchSidebarList(`${API_URL}/top/anime?filter=airing&limit=10`, sidebarList), 5600);
         }
 
     } catch (error) {
@@ -218,7 +247,9 @@ async function fetchCategory(url, container) {
         await new Promise(r => setTimeout(r, 600)); // Rate limit buffer
         const res = await fetch(url);
         const data = await res.json();
-        renderMovies(data.data, container);
+        if (data.data) {
+            renderMovies(data.data, container);
+        }
     } catch (error) {
         console.error('Error fetching category:', error);
     }
@@ -228,7 +259,9 @@ async function fetchListGroup(url, container) {
     try {
         const res = await fetch(url);
         const data = await res.json();
-        renderListGroup(data.data, container);
+        if (data.data) {
+            renderListGroup(data.data, container);
+        }
     } catch (e) { console.error(e); }
 }
 
@@ -236,8 +269,15 @@ async function fetchSidebarList(url, container) {
     try {
         const res = await fetch(url);
         const data = await res.json();
-        renderSidebarList(data.data, container);
-    } catch (e) { console.error(e); }
+        if (data.data) {
+            renderSidebarList(data.data, container);
+        } else {
+            container.innerHTML = '<p style="font-size:0.8rem; color:#ccc; text-align:center;">No data available</p>';
+        }
+    } catch (e) {
+        console.error(e);
+        container.innerHTML = '<p style="font-size:0.8rem; color:red; text-align:center;">Error loading</p>';
+    }
 }
 
 // --- Slideshow ---
